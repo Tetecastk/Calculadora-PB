@@ -6,7 +6,6 @@ public class OperacaoService implements IOperacoes {
 
 	private double resultado = 0.0;
 	
-	
 	public double getResultado() {
 		return resultado;
 	}
@@ -21,7 +20,6 @@ public class OperacaoService implements IOperacoes {
 	public double divisao(double num1, double num2) {
 		try {
 			resultado = num1 / num2;
-			JOptionPane.showMessageDialog(null, num1 + " / " + num2 + " = " + resultado);
 		} catch (ArithmeticException  e) {
 			JOptionPane.showMessageDialog(null, "ERRO: Divisão por 0.");	
 		}
@@ -31,16 +29,13 @@ public class OperacaoService implements IOperacoes {
 	@Override
 	public double multiplicacao(double num1, double num2) {
 		resultado = num1 * num2;
-		
-		JOptionPane.showMessageDialog(null, num1 + " x " + num2 + " = " + resultado);
 		return resultado;
 	}
 
 	@Override
 	public double subtracao(double num1, double num2) {
 		resultado = num1 - num2;
-		
-		JOptionPane.showMessageDialog(null, num1 + " - " + num2 + " = " + resultado);
 		return resultado;
 	}
+
 }
