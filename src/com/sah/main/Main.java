@@ -2,7 +2,7 @@ package com.sah.main;
 
 import javax.swing.JOptionPane;
 
-import com.sah.composicao.OperacaoComposicao;
+import com.sah.entities.Log;
 import com.sah.entities.OperacaoService;
 
 public class Main {
@@ -15,15 +15,20 @@ public class Main {
 		boolean continua = true;				
 		int opcao;
 		OperacaoService operacoes = new OperacaoService();
-		OperacaoComposicao opComposicao = new OperacaoComposicao();
+		Log log = new Log();
 			while(continua == true){
 				try {
-					opcao = Integer.parseInt(JOptionPane.showInputDialog("Escolha uma das Opções \n 0 - LOG \n  1 - SOMAR \n 2 - DIVISÃO \n 3 - MULTIPLICAÇÃO \n 4 - SUBTRAÇÃO  \n 5- SAIR"));	
-					if (opcao == 5) {
+					
+					opcao = Integer.parseInt(JOptionPane.showInputDialog("Escolha uma das Opções \n 1 - SOMA \n 2 - DIVISÃO \n 3 - MULTIPLICAÇÃO \n 4 - SUBTRAÇÃO  \n 5 - LOG \n 6 - SAIR"));	
+					if (opcao == 6) {
 						continua = false;
-					} else if (opcao == 0){
-						opComposicao.log();
-					}else {
+					} else if(opcao == 5){
+						for (OperacaoService sb : log.getListaDeOperacoes()) {
+							JOptionPane.showMessageDialog(null, log.converterLista(log.getListaDeOperacoes()));
+							//JOptionPane.showMessageDialog(null, sb.primeiroNumero + "+" + sb.segundoNumero + "=" + sb.getResultado());
+						}
+					} 
+					else  {
 						operacoes.primeiroNumero = Double.parseDouble(JOptionPane.showInputDialog("Entre com um número."));
 						operacoes.segundoNumero = Double.parseDouble(JOptionPane.showInputDialog("Entre com outro número."));				
 						switch (opcao) {
@@ -43,14 +48,13 @@ public class Main {
 							operacoes.subtracao();
 							JOptionPane.showMessageDialog(null, operacoes.primeiroNumero + " - " + operacoes.segundoNumero + " = " + operacoes.getResultado());
 							break;
-						case 5:
-							break;
 						default:
 							JOptionPane.showMessageDialog(null, "Favor escolher uma opção válida de 1 à 5.");
 							break;
 						}
+						log.adicionarOperacao(operacoes);
 					}
-					opComposicao.adicionarOperacao(operacoes);
+					
 				} catch (NumberFormatException e) {
 					JOptionPane.showMessageDialog(null, "ERRO: Favor entrar apenas com números.");
 				}	

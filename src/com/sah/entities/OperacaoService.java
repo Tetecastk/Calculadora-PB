@@ -2,15 +2,11 @@ package com.sah.entities;
 
 import javax.swing.JOptionPane;
 
-import com.sah.composicao.OperacaoComposicao;
-
 public class OperacaoService implements IOperacoes {
 
 	private double resultado = 0.0;
 	public double primeiroNumero;
 	public double segundoNumero;
-
-	OperacaoComposicao opComposicao = new OperacaoComposicao();
 	
 	public double getResultado() {
 		return resultado;
