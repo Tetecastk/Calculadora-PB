@@ -5,21 +5,24 @@ import javax.swing.JOptionPane;
 public class OperacaoService implements IOperacoes {
 
 	private double resultado = 0.0;
+	public double primeiroNumero;
+	public double segundoNumero;
 	
 	public double getResultado() {
 		return resultado;
 	}
 
 	@Override
-	public double adicao(double num1, double num2) {
-		resultado = num1 + num2;
+	public double adicao() {
+		resultado = primeiroNumero + segundoNumero;
 		return resultado;
+		
 	}
 
 	@Override
-	public double divisao(double num1, double num2) {
+	public double divisao() {
 		try {
-			resultado = num1 / num2;
+			resultado = primeiroNumero / segundoNumero;
 		} catch (ArithmeticException  e) {
 			JOptionPane.showMessageDialog(null, "ERRO: Divisão por 0.");	
 		}
@@ -27,15 +30,16 @@ public class OperacaoService implements IOperacoes {
 	}
 
 	@Override
-	public double multiplicacao(double num1, double num2) {
-		resultado = num1 * num2;
+	public double multiplicacao() {
+		resultado = primeiroNumero * segundoNumero;
 		return resultado;
 	}
 
 	@Override
-	public double subtracao(double num1, double num2) {
-		resultado = num1 - num2;
+	public double subtracao() {
+		resultado = primeiroNumero - segundoNumero;
 		return resultado;
 	}
-
+	
+	
 }
